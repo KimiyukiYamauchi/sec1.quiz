@@ -96,7 +96,7 @@ function displayQuestion(quiz) {
   quizContainer.appendChild(okButton);
 
   okButton.onclick = () => {
-    console.log(questionData);
+    // console.log(questionData);
     handleAnswer(questionData.answer, questionData.explanation, quiz);
     okButton.style.display = 'none'; // OKボタンを非表示
   };
@@ -183,7 +183,7 @@ function displayFinalScore() {
         ${incorrectQuestions
           .map((question) => `
             <tr>
-              <td>${question.investmentNumber}</td>
+              <td>${question.questionNumber}</td>
               <td>${question.question}</td>
               <td>${question.answer}</td>
             </tr>
