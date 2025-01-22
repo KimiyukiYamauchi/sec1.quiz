@@ -7,16 +7,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="mode-selection">
-    <h1>クイズモード選択</h1>
+  <div id="chapter-selection">
+    <h1>章を選択してください</h1>
+    <div id="chapter-buttons"></div>
+  </div>
+  
+  <div id="mode-selection" style="display: none;">
+    <h2>モードを選択してください</h2>
     <button id="normal-mode">通常モード</button>
     <button id="random-mode">ランダムモード</button>
-    <div id="random-options" style="display: none;">
-      <label for="random-count">出題する問題数:</label>
-      <input type="number" id="random-count" min="1" step="1">
-      <button id="start-random">開始</button>
-    </div>
   </div>
+
   <div id="quiz-wrapper" style="display:none;">
     <div id="header">
       <span id="progress">1問目/3問中</span>

@@ -10,6 +10,38 @@ async function fetchQuiz() {
   return await response.json();
 }
 
+// 章ボタン表示
+async function generateChapterOptions() {
+  const quizData = await fetchQuiz();
+  const chapters = [...new Set(quizData.map(item => item.chapter))];
+
+  const chapterSelectionContainer = document.getElementById('chapter-selection');
+
+  // 章ボタンのクリア
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.id = 'chapter-buttons'; // ボタン専用コンテナ
+  chapterSelectionContainer.querySelectorAll('#chapter-buttons').forEach(el => el.remove()); // 古いボタンを削除
+
+  // 新しい章ボタンの生成
+  chapters.forEach(chapter => {
+    const button = document.createElement('button');
+    button.textContent = chapter;
+    button.onclick = () => showModeSelection(quizData, chapter);
+    buttonsContainer.appendChild(button);
+  });
+
+  chapterSelectionContainer.appendChild(buttonsContainer);
+}
+
+// モードボタン表示
+function showModeSelection(quizData, chapter) {
+  document.getElementById('chapter-selection').style.display = 'none';
+  document.getElementById('mode-selection').style.display = 'block';
+
+  document.getElementById('normal-mode').onclick = () => startQuizForChapter(quizData, chapter, false);
+  document.getElementById('random-mode').onclick = () => startQuizForChapter(quizData, chapter, true);
+}
+
 // 配列をシャッフルする関数
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -17,28 +49,6 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-
-// モード選択時の処理
-document.getElementById('normal-mode').addEventListener('click', async () => {
-  selectedQuiz = await fetchQuiz();
-  startQuiz(selectedQuiz);
-});
-
-document.getElementById('random-mode').addEventListener('click', () => {
-  document.getElementById('random-options').style.display = 'block';
-});
-
-document.getElementById('start-random').addEventListener('click', async () => {
-  const totalQuestions = parseInt(document.getElementById('random-count').value);
-  if (isNaN(totalQuestions) || totalQuestions < 1) {
-    alert('正しい問題数を入力してください');
-    return;
-  }
-  const allQuestions = await fetchQuiz();
-  shuffleArray(allQuestions);
-  selectedQuiz = allQuestions.slice(0, totalQuestions);
-  startQuiz(selectedQuiz);
-});
 
 // クイズを開始
 function startQuiz(quiz) {
@@ -48,6 +58,21 @@ function startQuiz(quiz) {
   score = 0;
   displayQuestion(quiz);
 }
+
+// モードに応じて問題を出題 
+function startQuizForChapter(quizData, chapter, isRandom) {
+  const filteredQuiz = quizData.filter(item => item.chapter === chapter);
+
+  if (isRandom) {
+    shuffleArray(filteredQuiz); // ランダムに並べ替える
+  }
+
+  startQuiz(filteredQuiz);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await generateChapterOptions();
+});
 
 // クイズの進捗を更新
 function updateProgress(current, total) {

@@ -119,3 +119,28 @@ th {
 th:nth-child(3), td:nth-child(3) {
   width: 20%; /* 正解列を広げる */
 }
+
+#chapter-selection {
+  text-align: left; /* 章選択全体を左寄せ */
+  margin-left: 20px; /* 必要なら少し余白を追加 */
+}
+
+#chapter-selection button {
+  display: block; /* ボタンを縦に並べる */
+  width: auto; /* ボタン幅を自動調整 */
+  margin: 10px 0; /* ボタン間の余白 */
+  padding: 10px;
+  font-size: 16px;
+  text-align: left; /* ボタンのテキストを左寄せ */
+  cursor: pointer;
+  background-color: #007bff; /* 背景色: 明るい青 */
+  color: #ffffff; /* 文字色: 白 */
+  border: none; /* 境界線を削除 */
+  border-radius: 5px; /* 角を丸める */
+  transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+#chapter-selection button:hover {
+  background-color: #0056b3; /* ホバー時の背景色: 濃い青 */
+  color: #ffffff; /* 文字色: 白（変化なし） */
+}
