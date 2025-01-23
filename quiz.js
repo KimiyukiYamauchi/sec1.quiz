@@ -110,7 +110,7 @@ function displayQuestion(quiz) {
     
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.value = formatText(choice);
+    checkbox.value = choice;
     checkbox.name = 'choice';
     checkbox.id = `choice-${index}`;
     
