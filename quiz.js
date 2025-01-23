@@ -80,6 +80,13 @@ function updateProgress(current, total) {
   progressElement.textContent = `${current}問目/${total}問中`;
 }
 
+// テキストを整形
+function formatText(text) {
+  return text
+    .replace(/\n/g, '<br>') // 改行を <br> に置き換える
+    .replace(/ /g, '&nbsp;'); // 半角スペースを &nbsp; に置き換える
+}
+
 // 質問を表示
 function displayQuestion(quiz) {
   const quizContainer = document.getElementById('quiz-container');
@@ -93,7 +100,7 @@ function displayQuestion(quiz) {
 
   // 質問表示
   const questionElement = document.createElement('h2');
-  questionElement.textContent = questionData.question;
+  questionElement.innerHTML = formatText(questionData.question);
   quizContainer.appendChild(questionElement);
 
   // 選択肢表示
@@ -103,7 +110,7 @@ function displayQuestion(quiz) {
     
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.value = choice;
+    checkbox.value = formatText(choice);
     checkbox.name = 'choice';
     checkbox.id = `choice-${index}`;
     
@@ -165,7 +172,7 @@ function handleAnswer(correctAnswers, explanation, quiz) {
 
   // 解説表示
   const explanationElement = document.createElement('div');
-  explanationElement.innerHTML = `解説: ${explanation.replace(/\n/g, '<br>')}`;
+  explanationElement.innerHTML = `解説: ${formatText(explanation)}`;
   feedbackElement.appendChild(explanationElement);
 
   currentQuestionIndex++;
