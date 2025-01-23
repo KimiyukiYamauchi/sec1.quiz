@@ -603,8 +603,8 @@
     "chapter": "第4章 ソフトウェア開発の概要",
     "questionNumber": 9,
     "question": "プログラマーがコードを書いています。このコードは、開設時に口座に入金された金額に基づき、普通預金口座に適用される金利を自動選択するものです。7000 ドル未満で口座開設した場合の金利は4%です。7000 ドル以上で口座を開設した場合の金利は7%です。この要件に最適な疑似コードは、次のうちどれですか。",
-    "choices": ["IF amount > 7000\n  interestRate = 0.04\nELSE\n  interestRate = 0.07\nEND IF", "IF amount < 7000\n  interestRate = 0.07\nELSE\n  interestRate = 0.04\nEND IF", "IF amount < 7000\n  interestRate = 0.04\nELSE\n  interestRate = 0.07\nEND IF", "IF amount < 7000\n  interestRate = 0.04\nIF\n  interestRate = 0.07\nEND IF", "IF amount < 7000\n  interestRate = 0.07\nIF\n  interestRate = 0.04\nEND IF"],
-    "answer": ["IF amount < 7000\n  interestRate = 0.04\nELSE\n  interestRate = 0.07\nEND IF"], 
+    "choices": ["IF　amount　>　7000　interestRate　=　0.04　ELSE　interestRate　=　0.07　END　IF", "IF　amount　<　7000　interestRate　=　0.07　ELSE　interestRate　=　0.04　END　IF", "IF　amount　<　7000　interestRate　=　0.04　ELSE　interestRate　=　0.07　END　IF", "IF　amount　<　7000　interestRate　=　0.04　IF　interestRate　=　0.07　END　IF", "IF　amount　<　7000　interestRate　=　0.07　IF　interestRate　=　0.04　END　IF"],
+    "answer": ["IF　amount　<　7000　interestRate　=　0.04　ELSE　interestRate　=　0.07　END　IF"], 
     "explanation": "口座に入金された金額は変数 amount です。IF amount < 7000 で true は7000 ドル未満、False7000 ドル以上に分けられ、それぞれ該当金利が割り当てられる処理になります。"
   }
 ]
