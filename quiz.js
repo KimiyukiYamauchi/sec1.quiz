@@ -172,7 +172,7 @@ function handleAnswer(correctAnswers, explanation, quiz) {
 
   // 解説表示
   const explanationElement = document.createElement('div');
-  explanationElement.innerHTML = `解説: ${formatText(explanation)}`;
+  explanationElement.innerHTML = `${formatText(explanation)}`;
   feedbackElement.appendChild(explanationElement);
 
   currentQuestionIndex++;
