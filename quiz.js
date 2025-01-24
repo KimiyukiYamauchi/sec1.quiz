@@ -15,6 +15,9 @@ async function generateChapterOptions() {
   const quizData = await fetchQuiz();
   const chapters = [...new Set(quizData.map(item => item.chapter))];
 
+  // console.log(quizData);
+  // console.log(chapters);
+
   const chapterSelectionContainer = document.getElementById('chapter-selection');
 
   // 章ボタンのクリア
@@ -225,6 +228,7 @@ function displayFinalScore() {
 }
 
 // ページ読み込み時に章ボタンを表示
-document.addEventListener('DOMContntLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  console.log('DOMが読み込まれました');
   await generateChapterOptions();
 });
