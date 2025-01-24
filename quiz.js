@@ -70,9 +70,6 @@ function startQuizForChapter(quizData, chapter, isRandom) {
   startQuiz(filteredQuiz);
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  await generateChapterOptions();
-});
 
 // クイズの進捗を更新
 function updateProgress(current, total) {
@@ -227,7 +224,7 @@ function displayFinalScore() {
   }
 }
 
-// 初期化
-(async function initQuiz() {
-  await fetchQuiz();
-})();
+// ページ読み込み時に章ボタンを表示
+document.addEventListener('DOMContntLoaded', async () => {
+  await generateChapterOptions();
+});
