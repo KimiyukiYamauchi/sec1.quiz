@@ -45,6 +45,14 @@ function showModeSelection(quizData, chapter) {
   document.getElementById('random-mode').onclick = () => startQuizForChapter(quizData, chapter, true);
 }
 
+// 章とモードを表示
+function updateChapterModeDisplay(chapter, mode) {
+  const chapterModeDisplay = document.getElementById('chapter-mode-display');
+
+  const chapterTitle = chapter.split(' ')[0]; // 章番号のみ取得
+  chapterModeDisplay.textContent = `${chapterTitle} > ${mode}`;
+}
+
 // 配列をシャッフルする関数
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -65,6 +73,10 @@ function startQuiz(quiz) {
 // モードに応じて問題を出題 
 function startQuizForChapter(quizData, chapter, isRandom) {
   const filteredQuiz = quizData.filter(item => item.chapter === chapter);
+  const mode = isRandom ? 'ランダム' : '通常';
+
+  // チャプターとモードを表示
+  updateChapterModeDisplay(chapter, mode);
 
   if (isRandom) {
     shuffleArray(filteredQuiz); // ランダムに並べ替える
