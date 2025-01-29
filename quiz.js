@@ -3,6 +3,9 @@ const incorrectAnswers = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedQuiz = [];
+let currentChapter = '';  // 現在の章
+let currentMode = '';      // 現在のモード
+
 
 // クイズデータをフェッチ
 async function fetchQuiz() {
@@ -49,8 +52,9 @@ function showModeSelection(quizData, chapter) {
 function updateChapterModeDisplay(chapter, mode) {
   const chapterModeDisplay = document.getElementById('chapter-mode-display');
 
-  const chapterTitle = chapter.split(' ')[0]; // 章番号のみ取得
-  chapterModeDisplay.textContent = `${chapterTitle} > ${mode}`;
+  currentChapter = chapter.split(' ')[0]; // 章番号のみ取得
+  currentMode = mode;
+  chapterModeDisplay.textContent = `${currentChapter} > ${currentMode}`;
 }
 
 // 配列をシャッフルする関数
@@ -208,9 +212,13 @@ function displayFinalScore() {
   const totalQuestions = incorrectQuestions.length + score; // 全問題数
   const accuracy = ((score / totalQuestions) * 100).toFixed(2); // 正解率を計算（小数点2桁まで）
 
+
   quizWrapper.innerHTML = `
-    <h2>結果発表</h2>
-    <p>正解率: ${accuracy}%</p>
+    <h2 style="margin: 0;">結果発表</h2>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+       <span>${currentChapter} > ${currentMode}</span>
+        <span>正解率: ${accuracy}%</span>
+    </div>
   `;
 
   if (incorrectQuestions.length > 0) {
