@@ -142,6 +142,13 @@ function displayQuestion(quiz) {
     checkbox.value = choice;
     checkbox.name = 'choice';
     checkbox.id = `choice-${index}`;
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        label.classList.add('selected-choice');
+      } else {
+        label.classList.remove('selected-choice');
+      }
+    });
     
     label.appendChild(checkbox);
     label.appendChild(document.createTextNode(choice));
