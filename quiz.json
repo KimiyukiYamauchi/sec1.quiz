@@ -588,7 +588,7 @@
     "questionNumber": 7,
     "question": "プログラマーは大きなプログラムを小さくて保守が容易なコンポーネントに変えようとしています。このプログラマーが作成·開発するのは、次のうちどれですか。(2つ選択)",
     "choices": ["ループ", "関数", "分岐", "配列", "メソッド", "定数"],
-    "answer": ["アルゴリズム"], 
+    "answer": ["ループ", "関数"], 
     "explanation": "繰り返し処理が発生する場合にはループ機能を使います。\n関数を使い、計算式を簡素化させる。それにより大きなプログラムをコンパクトにまとめられるます。"
   },
   {
@@ -603,8 +603,8 @@
     "chapter": "第4章 ソフトウェア開発の概要",
     "questionNumber": 9,
     "question": "プログラマーがコードを書いています。このコードは、開設時に口座に入金された金額に基づき、普通預金口座に適用される金利を自動選択するものです。7000 ドル未満で口座開設した場合の金利は4%です。7000 ドル以上で口座を開設した場合の金利は7%です。この要件に最適な疑似コードは、次のうちどれですか。",
-    "choices": ["IF　amount　>　7000　interestRate　=　0.04　ELSE　interestRate　=　0.07　END　IF", "IF　amount　<　7000　interestRate　=　0.07　ELSE　interestRate　=　0.04　END　IF", "IF　amount　<　7000　interestRate　=　0.04　ELSE　interestRate　=　0.07　END　IF", "IF　amount　<　7000　interestRate　=　0.04　IF　interestRate　=　0.07　END　IF", "IF　amount　<　7000　interestRate　=　0.07　IF　interestRate　=　0.04　END　IF"],
-    "answer": ["IF　amount　<　7000　interestRate　=　0.04　ELSE　interestRate　=　0.07　END　IF"], 
+    "choices": ["IF　amount　>　700\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.07\nELSE　　interestRate　=　0.04\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.04\nIF\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.07\nIF\n　　interestRate　=　0.04\nEND　IF"],
+    "answer": ["IF　amount　<　7000\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF"], 
     "explanation": "口座に入金された金額は変数 amount です。IF amount < 7000 で true は7000 ドル未満、False7000 ドル以上に分けられ、それぞれ該当金利が割り当てられる処理になります。"
   },
   {
@@ -644,7 +644,7 @@
     "questionNumber": 14,
     "question": "コンピュータープログラミングにおいて、オブジェクトのプロパティを説明しているのは、次のうちどれですか。",
     "choices": ["属性", "オブジェクト", "配列", "ベクトル", "メソッド"],
-    "answer": ["Java"], 
+    "answer": ["属性"], 
     "explanation": "プロパティとはソフトウェアが取り扱う対象(オブジェクト)の持つ設定や状態、属性などの情報のこと。"
   },
   {
@@ -685,7 +685,7 @@
     "question": "データベースに保管するより、フラットファイルとして保管するのに適したものは、次のうちどれですか。",
     "choices": ["連絡先リスト", "ファミリーレストランの場所", "デパートへの行き方", "店舗在庫"],
     "answer": ["デパートへの行き方"], 
-    "explanation": "フラットファイルとは、紙資料などを閉じたのファイルの意味もあります。住所や在庫数量などのデータはデータベースにしたほうが活用しやすいです。"
+    "explanation": "フラットファイルとは、紙資料などを閉じたのファイルの意味もあります。\n住所や在庫数量などのデータはデータベースにしたほうが活用しやすいです。"
   },
   {
     "chapter": "第5章 データベースの基礎",
@@ -941,7 +941,7 @@
     "question": "IT 部門が社員用に新しいパスワードポリシーを定めました。ボリシーには以下か明記でれています。\n·パスワードには一般的に辞書に載っている単語は使わない。\n·パスワードには最低1文字の特殊文字を使う。\n·パスワードには過去に使った 6つのパスワードと異なるものにする。\n·パスワードは最低1文字の大文字または数字を入れる。\n\nここで追加するべき処理は、次のうちどれですか。(2つ選択)",
     "choices": ["パスワードのロックアウト", "パスワードの複雑化", "パスワードの失効", "パスワードの使用期間", "パスワードの文字数", "パスワードの履歴"],
     "answer": ["パスワードの使用期間", "パスワードの文字数"], 
-    "explanation": "パスワードポリシーはパスワードの設定するための考え方になります。ポリシーに対し追加すべき処理は試用期間と文字数になります。"
+    "explanation": "パスワードポリシーはパスワードの設定するための考え方になります。ポリシーに対し追加すべき処理は使用期間と文字数になります。"
   },
   {
     "chapter": "第6章 セキュリティ",
