@@ -61,7 +61,7 @@
     "question": "新しくスタートした企業がロゴを作りました。この企業はどのような理由であってもこのロゴを使えないように保証したいと考えています。同企業が活用できるものは、次のうちどれですか。(2つ選択)",
     "choices": ["特許", "著作権", "NDA", "商標", "EULA"],
     "answer": ["著作権", "商標"], 
-    "explanation": "著作権は、知的財産権(知的所有権)の一種。\n商標は、事業者が取り扱う商品·サービスを他人のものと区別するために使用するマーク(識別標識)です。\nEULA はソフトウェア利用許諾契約"
+    "explanation": "著作権は、知的財産権(知的所有権)の一種。\n商標は、事業者が取り扱う商品·サービスを他人のものと区別するために使用するマーク(識別標識)です。\nEULA はソフトウェア利用許諾契約\nNDA（Non-Disclosure Agreement）とは、日本語で「秘密保持契約」を指します。"
   },
   {
     "chapter": "第1章 ITの概要と専門用語",
@@ -93,7 +93,7 @@
     "question": "Mbps より小さい単位は、次のうちでれですか。(2つ選択)",
     "choices": ["bps", "Kbps", "Mbps", "Gbps", "Tbps"],
     "answer": ["bps", "Kbps"], 
-    "explanation": "bpsとはビット毎秒。\n"
+    "explanation": "bpsとはビット毎秒。\n1Kbpsは1000bps。\n1Mbpsは10000Kbps。\n1Gbpsは1000Mbps。\n1Tbpsは1000Gbps。"
   },
   {
     "chapter": "第1章 ITの概要と専門用語",
@@ -245,7 +245,7 @@
     "question": "ファイルを転送する際にネットワークを介して転送速度が最も早いものは、次のうちどれですか。",
     "choices": ["2000Kbps", "1000Mbps", "1.23Gbps", "100Mbps", "1000bps"],
     "answer": ["1.23Gbps"], 
-    "explanation": "Gbps>Mbps>Kbpsの順で早いです。"
+    "explanation": "Gbps>Mbps>Kbpsの順で早いです。\n1Kbpsは1000bps。\n1Mbpsは10000Kbps。\n1Gbpsは1000Mbps。\n1Tbpsは1000Gbps。"
   },
   {
     "chapter": "第2章 インフラストラクチャ",
@@ -603,7 +603,7 @@
     "chapter": "第4章 ソフトウェア開発の概要",
     "questionNumber": 9,
     "question": "プログラマーがコードを書いています。このコードは、開設時に口座に入金された金額に基づき、普通預金口座に適用される金利を自動選択するものです。7000 ドル未満で口座開設した場合の金利は4%です。7000 ドル以上で口座を開設した場合の金利は7%です。この要件に最適な疑似コードは、次のうちどれですか。",
-    "choices": ["IF　amount　>　700\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.07\nELSE　　interestRate　=　0.04\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.04\nIF\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.07\nIF\n　　interestRate　=　0.04\nEND　IF"],
+    "choices": ["IF　amount　>　7000\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.07\nELSE　　interestRate　=　0.04\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.04\nIF\n　　interestRate　=　0.07\nEND　IF", "IF　amount　<　7000\n　　interestRate　=　0.07\nIF\n　　interestRate　=　0.04\nEND　IF"],
     "answer": ["IF　amount　<　7000\n　　interestRate　=　0.04\nELSE\n　　interestRate　=　0.07\nEND　IF"], 
     "explanation": "口座に入金された金額は変数 amount です。IF amount < 7000 で true は7000 ドル未満、False7000 ドル以上に分けられ、それぞれ該当金利が割り当てられる処理になります。"
   },
