@@ -9,8 +9,16 @@ let currentMode = '';      // 現在のモード
 
 // クイズデータをフェッチ
 async function fetchQuiz() {
-  const response = await fetch('quiz.json');
-  return await response.json();
+  try {
+    const response = await fetch('quiz.json');
+    if (!response.ok) {
+      throw new Error('クイズデータの取得に失敗しました');
+    }
+    return await response.json();
+  } catch (error) {
+    alert('クイズデータの取得に失敗しました。ネットワーク接続やファイルの場所を確認してください。');
+    console.error(error);
+  }
 }
 
 // 章ボタン表示
@@ -18,29 +26,86 @@ async function generateChapterOptions() {
   const quizData = await fetchQuiz();
   const chapters = [...new Set(quizData.map(item => item.chapter))];
 
-  // console.log(quizData);
-  // console.log(chapters);
-
   const chapterSelectionContainer = document.getElementById('chapter-selection');
 
-  // 章ボタンのクリア
-  const buttonsContainer = document.createElement('div');
-  buttonsContainer.id = 'chapter-buttons'; // ボタン専用コンテナ
-  chapterSelectionContainer.querySelectorAll('#chapter-buttons').forEach(el => el.remove()); // 古いボタンを削除
+  // 章ボタン専用コンテナのクリア
+  let buttonsContainer = chapterSelectionContainer.querySelector('#chapter-buttons');
+  if (!buttonsContainer) {
+    buttonsContainer = document.createElement('div');
+    buttonsContainer.id = 'chapter-buttons';
+  } else {
+    buttonsContainer.innerHTML = '';
+  }
 
-  // 新しい章ボタンの生成
+  // 各章ごとに、ボタンと正解率表示をまとめたコンテナを生成
   chapters.forEach(chapter => {
+    // コンテナ作成（ボタンと正解率表示を横並びにする）
+    const chapterContainer = document.createElement('div');
+    chapterContainer.className = 'chapter-container';
+
+    // 章選択ボタン
     const button = document.createElement('button');
+    button.className = 'chapter-button';
     button.textContent = chapter;
     button.onclick = () => showModeSelection(quizData, chapter);
-    buttonsContainer.appendChild(button);
+    chapterContainer.appendChild(button);
+
+     // 正解率表示用 span
+     const accuracyHidden = document.createElement('span');
+     accuracyHidden.className = 'chapter-rate-hidden';
+     accuracyHidden.style.display = 'none';  // 非表示
+
+    // ローカルストレージから保存された正解率を取得
+    const currentChapter = chapter.split(' ')[0]; // 章番号のみ取得
+    const storedAccuracy = localStorage.getItem('quiz-' + currentChapter);
+    console.log('quiz-' + currentChapter + " = " + storedAccuracy)
+
+    if (storedAccuracy !== null) {
+      if (parseFloat(storedAccuracy) === 100) {
+        accuracyHidden.textContent = 'パーフェクト';
+      } else {
+        accuracyHidden.textContent = storedAccuracy + '%';
+        if (parseFloat(storedAccuracy) >= 80) {
+          // 80%以上なら緑色のチェックマークを追加
+          const checkMark = document.createElement('span');
+          checkMark.textContent = ' ✓';
+          checkMark.style.color = 'green';
+          accuracyHidden.appendChild(checkMark);
+        }
+      }
+    }
+    chapterContainer.appendChild(accuracyHidden);
+
+    // コンテナをボタン群のコンテナに追加
+    buttonsContainer.appendChild(chapterContainer);
   });
 
   // 「すべての問題」ボタンを追加
+  const allContainer = document.createElement('div');
+  allContainer.className = 'chapter-container';
   const allButton = document.createElement('button');
+  allButton.className = 'chapter-button all-button';
   allButton.textContent = 'all すべての問題';
   allButton.onclick = () => showModeSelection(quizData, 'all');
-  buttonsContainer.appendChild(allButton);
+  allContainer.appendChild(allButton);
+  
+  // allボタン用のhiddenな正解率情報
+  const allAccuracyHidden = document.createElement('span');
+  allAccuracyHidden.className = 'chapter-rate-hidden';
+  allAccuracyHidden.style.display = 'none'; // 非表示
+  const storedAccuracyAll = localStorage.getItem('quiz-all');
+  if (storedAccuracyAll !== null) {
+    if (parseFloat(storedAccuracyAll) === 100) {
+      allAccuracyHidden.textContent = 'パーフェクト';
+    } else {
+      allAccuracyHidden.textContent = storedAccuracyAll + '%';
+      if (parseFloat(storedAccuracyAll) >= 80) {
+        allAccuracyHidden.textContent += ' ✓';
+      }
+    }
+  }
+  allContainer.appendChild(allAccuracyHidden);
+  buttonsContainer.appendChild(allContainer);
 
   chapterSelectionContainer.appendChild(buttonsContainer);
 }
@@ -244,6 +309,16 @@ function displayFinalScore() {
   const totalQuestions = incorrectQuestions.length + score; // 全問題数
   const accuracy = ((score / totalQuestions) * 100).toFixed(2); // 正解率を計算（小数点2桁まで）
 
+  // ローカルストレージに章ごとに保存（上書きの場合）
+  // "ランダム"モードの場合のみローカルストレージに保存する
+  if (currentMode === "ランダム") {
+    const key = (currentChapter === "all") ? 'quiz-all' : 'quiz-' + currentChapter;
+    const storedAccuracy = localStorage.getItem(key);
+    // 保存されていない場合または新しい正解率が既存より大きい場合に保存
+    if (storedAccuracy === null || parseFloat(accuracy) > parseFloat(storedAccuracy)) {
+      localStorage.setItem(key, accuracy);
+    }
+  }
 
   quizWrapper.innerHTML = `
     <h2 style="margin: 0;">結果発表</h2>
