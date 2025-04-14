@@ -93,7 +93,7 @@
     "question": "Mbps より小さい単位は、次のうちでれですか。(2つ選択)",
     "choices": ["bps", "Kbps", "Mbps", "Gbps", "Tbps"],
     "answer": ["bps", "Kbps"], 
-    "explanation": "bpsとはビット毎秒。\n1Kbpsは1000bps。\n1Mbpsは10000Kbps。\n1Gbpsは1000Mbps。\n1Tbpsは1000Gbps。"
+    "explanation": "bpsとはビット毎秒。\n1Kbpsは1000bps。\n1Mbpsは1000Kbps。\n1Gbpsは1000Mbps。\n1Tbpsは1000Gbps。"
   },
   {
     "chapter": "第1章 ITの概要と専門用語",
