@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz App</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="chapter-selection">
-    <h1>章を選択してください</h1>
-    <div id="chapter-buttons"></div>
-  </div>
-  
-  <div id="mode-selection" style="display: none;">
-    <h2>モードを選択してください</h2>
-    <button id="normal-mode">通常モード</button>
-    <button id="random-mode">ランダムモード</button>
-  </div>
-
-  <div id="quiz-wrapper" style="display:none;">
-    <div id="header">
-      <span id="chapter-mode-display"></span>
-      <span id="progress">1問目/3問中</span>
-      <span id="score-display">0問正解</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="chapter-selection">
+      <div id="chapter-buttons"></div>
     </div>
-    <div id="quiz-container"></div>
-    <button id="next-question" style="display:none;">次へ</button>
-  </div>
-  <script src="quiz.js"></script>
-</body>
+
+    <div id="mode-selection" style="display: none">
+      <h2>モードを選択してください</h2>
+      <button id="normal-mode">通常モード</button>
+      <button id="random-mode">ランダムモード</button>
+    </div>
+
+    <div id="quiz-wrapper" style="display: none">
+      <div id="header">
+        <span id="chapter-mode-display"></span>
+        <span id="progress">1問目/3問中</span>
+        <span id="score-display">0問正解</span>
+      </div>
+      <div id="quiz-container"></div>
+      <button id="next-question" style="display: none">次へ</button>
+    </div>
+    <script src="quiz.js"></script>
+  </body>
 </html>
