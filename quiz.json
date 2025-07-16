@@ -2773,8 +2773,8 @@
     "chapter": "第10章 暗号技術(暗号)",
     "questionNumber": 1134,
     "question": "公開鍵暗号方式のアルゴリズムはどれか、正しいものを次の選択肢の中から1つ選びなさい。",
-    "choices": ["Triple DES", "TLS", "ECC", " IDEA"],
-    "answer": ["IDEA"],
+    "choices": ["Triple DES", "TLS", "ECC", "IDEA"],
+    "answer": ["ECC"],
     "explanation": ""
   },
   {
